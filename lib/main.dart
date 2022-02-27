@@ -6,8 +6,16 @@ void main() {
   ));
 }
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
   const NinjaCard({Key? key}) : super(key: key);
+
+  @override
+  State<NinjaCard> createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+
+  int NUMvalue = 0 ;
 
   @override
   Widget build(BuildContext context) {
@@ -86,10 +94,29 @@ class NinjaCard extends StatelessWidget {
                   color: Colors.white
                 ),)
               ],
-            )
+            ),
+            SizedBox(height: 30,),
           ],
         ),
       ),
+      bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          IconButton(
+              onPressed: (){
+                setState(() {
+                  NUMvalue -= 1;
+                });
+              },
+              icon: Icon(Icons.arrow_left_rounded,color: Colors.amberAccent,)),
+          Text("$NUMvalue",style: TextStyle(color: Colors.amberAccent),),
+          IconButton(
+              onPressed: (){
+                setState(() {
+                  NUMvalue += 1;
+                });
+              },
+              icon: Icon(Icons.arrow_right_rounded,color: Colors.amberAccent,)),]),
     );
   }
 }
